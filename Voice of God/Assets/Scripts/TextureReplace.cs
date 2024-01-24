@@ -7,31 +7,46 @@ using UnityEngine;
 public class TextureReplace : MonoBehaviour
 {
     Object[] allObjects;
-    public Material TextureToApply;
-
+    public Material MatToApply;
     bool fired = false;
+    public double delay;
 
     void Start()
     {
-        allObjects = FindObjectsOfType(typeof(MonoBehaviour));
+        
     }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && !fired) {
             fired = true;
-            fireTextures();
+            StartCoroutine(fireTextures(delay));
         }
         if(Input.GetKeyUp(KeyCode.E)) {
             fired = false;
         }
     }
 
-    void fireTextures() {
+    IEnumerator fireTextures(double delay) {
+        allObjects = FindObjectsOfType(typeof(MeshRenderer));
+        print("Fired!");
+        Material[] materials = new Material[allObjects.Length];
+        int index = 0;
         foreach (Object obj in allObjects)
         {
-            if(obj.GetComponent<MeshRenderer>() != null)
-                obj.GetComponent<MeshRenderer>().SetMaterials = obj.GetComponent<MeshRenderer>().GetMaterials();
+            if(obj.GetComponent<MeshRenderer>() != null) {
+                materials[index] = obj.GetComponent<MeshRenderer>().material;
+                obj.GetComponent<MeshRenderer>().material = MatToApply;
+            }
+            index++;
+        }
+        index = 0;
+        yield return new WaitForSeconds((float)delay);
+        foreach (Object obj in allObjects) {
+            if(obj.GetComponent<MeshRenderer>() != null) {
+                obj.GetComponent<MeshRenderer>().material = materials[index];
+            }
+            index++;
         }
     }   
 }
