@@ -54,6 +54,6 @@ public class AnimGif : MonoBehaviour {
     void Update () {
         int index = (int)(Time.time * fps);
         index = index % frames.Length;
-        gameObject.GetComponent<MeshRenderer>().material = frames[index];
+        // gameObject.GetComponent<MeshRenderer>().material = frames[index];
     }
 }
