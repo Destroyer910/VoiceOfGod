@@ -36,7 +36,8 @@ public class TextureReplace : MonoBehaviour
         {
             if(obj.GetComponent<MeshRenderer>() != null) {
                 materials[index] = obj.GetComponent<MeshRenderer>().material;
-                obj.GetComponent<MeshRenderer>().material = MatToApply;
+                // obj.GetComponent<MeshRenderer>().material = MatToApply;
+                obj.AddComponent<AnimGif>();
             }
             index++;
         }
@@ -44,6 +45,7 @@ public class TextureReplace : MonoBehaviour
         yield return new WaitForSeconds((float)delay);
         foreach (Object obj in allObjects) {
             if(obj.GetComponent<MeshRenderer>() != null) {
+                Destroy(obj.GetComponent<AnimGif>());
                 obj.GetComponent<MeshRenderer>().material = materials[index];
             }
             index++;
