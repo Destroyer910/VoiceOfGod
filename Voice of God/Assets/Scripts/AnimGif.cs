@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class AnimGif : MonoBehaviour {
-    [SerializeField] private  float fps = 0.1f;
+    [SerializeField] private  float fps = 0.02f;
     [SerializeField] Material[] frame;
     int index = 0;
 
@@ -13,8 +13,14 @@ public class AnimGif : MonoBehaviour {
     {
         frame = new Material[]
         {
-            Resources.Load("frame0", typeof(Material)) as Material,
-            Resources.Load("frame1", typeof(Material)) as Material
+            Resources.Load("vert_frame0", typeof(Material)) as Material,
+            Resources.Load("vert_frame1", typeof(Material)) as Material,
+            Resources.Load("vert_frame2", typeof(Material)) as Material,
+            Resources.Load("vert_frame3", typeof(Material)) as Material,
+            Resources.Load("vert_frame4", typeof(Material)) as Material,
+            Resources.Load("vert_frame5", typeof(Material)) as Material,
+            Resources.Load("vert_frame6", typeof(Material)) as Material,
+            Resources.Load("vert_frame7", typeof(Material)) as Material
         };
         print(Resources.Load("frame0", typeof(Material)) as Material);
         StartCoroutine(frameCycle());
