@@ -37,7 +37,8 @@ public class TextureReplace : MonoBehaviour
             if(obj.GetComponent<MeshRenderer>() != null) {
                 materials[index] = obj.GetComponent<MeshRenderer>().material;
                 // obj.GetComponent<MeshRenderer>().material = MatToApply;
-                obj.AddComponent<AnimGif>();
+                if (!obj.GetComponent<AnimGif>())
+                    obj.AddComponent<AnimGif>();
             }
             index++;
         }
