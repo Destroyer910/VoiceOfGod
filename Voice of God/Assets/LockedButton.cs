@@ -8,6 +8,10 @@ public class LockedButton : MonoBehaviour
     [SerializeField] private bool canPushButton;
     [SerializeField] private bool buttonIsPushed;
 
+    public GameObject activateUponGoodPush;
+
+    private bool canPushAgain = true;
+
     public Transform movePoint;
 
     public void tryUnlockButton()
@@ -21,11 +25,18 @@ public class LockedButton : MonoBehaviour
 
     public void pushButton()
     {
-        Vector3 tempPoint = gameObject.transform.position;
-        StartCoroutine(moveButton(tempPoint));
+        if(canPushAgain)
+        {
+            Debug.Log("Work!!");
+            Vector3 tempPoint = gameObject.transform.position;
+            canPushAgain = false;
+            StartCoroutine(moveButton(tempPoint));
+        }
         if(canPushButton)
         {
+            canPushButton = false;
             buttonIsPushed = true;
+            activateUponGoodPush.SetActive(true);
         }
     }
 
@@ -34,5 +45,6 @@ public class LockedButton : MonoBehaviour
         gameObject.transform.position = movePoint.position;
         yield return new WaitForSecondsRealtime(1f);
         gameObject.transform.position = startPos;
+        canPushAgain = true;
     }
 }

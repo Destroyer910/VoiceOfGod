@@ -1915,6 +1915,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e49b6569c722b43b786e854ba97621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlugged: 0
+  plugToAny: 0
+  buttonScript: {fileID: 0}
+  plugThing: {fileID: 0}
 --- !u!65 &406707586
 BoxCollider:
   m_ObjectHideFlags: 0
