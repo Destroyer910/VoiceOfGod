@@ -13,6 +13,7 @@ public class LockedButton : MonoBehaviour
     private bool canPushAgain = true;
 
     public Transform movePoint;
+    public LockedButton buttonScript;
 
     public void tryUnlockButton()
     {
@@ -37,6 +38,10 @@ public class LockedButton : MonoBehaviour
             canPushButton = false;
             buttonIsPushed = true;
             activateUponGoodPush.SetActive(true);
+            if(buttonScript != null)
+            {
+                buttonScript.tryUnlockButton();
+            }
         }
     }
 
