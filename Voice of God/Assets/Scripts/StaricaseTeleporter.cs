@@ -4,5 +4,16 @@ using UnityEngine;
 
 public class StaricaseTeleporter : MonoBehaviour
 {
-    [SerializeField] private Vector3 targetPosition;
+    [SerializeField] GameObject targetObject;
+    private Vector3 targetPosition;
+
+    private void Start()
+    {
+        targetPosition = targetObject.transform.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.transform.position = targetPosition;
+    }
 }
