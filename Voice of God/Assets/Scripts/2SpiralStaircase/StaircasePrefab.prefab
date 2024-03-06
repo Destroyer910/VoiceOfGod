@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stairObject: {fileID: 919132149155446097, guid: 0891650e6c380ff4ab17c05dc3b32e83, type: 3}
+  floorObject: {fileID: 2896611809739741621, guid: 90b5c11e55baea54e9639d4e334a2c86, type: 3}
+  previous: {fileID: 0}
 --- !u!1001 &2662679380336059620
 PrefabInstance:
   m_ObjectHideFlags: 0
