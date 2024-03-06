@@ -4,22 +4,42 @@ using UnityEngine;
 
 public class CreateObject : MonoBehaviour
 {
-    private GameObject stairObject;
+    [SerializeField] private GameObject stairObject;
     private Vector3 targetPosition;
     private bool fired = false;
     private float numRotations;
-    void Start()
+    private float offset;
+
+    private void Update()
     {
-        stairObject = transform.parent.gameObject;
-        numRotations = (transform.position.y / 6.227f) + 1;
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            createNew();
+        }
     }
+
+    private void Start()
+    {
+        if(transform.parent.name.Contains("Stackable"))
+        {
+            offset = 4.4219f;
+        } else
+        {
+            offset = 4.4625f;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!fired) {
+        createNew();
+    }
+
+    private void createNew()
+    {
+        if (!fired)
+        {
             fired = true;
-            Quaternion rot = Quaternion.identity;
-            rot.eulerAngles = new Vector3(transform.parent.gameObject.transform.rotation.x, transform.parent.gameObject.transform.rotation.y + (342.49f*numRotations), transform.parent.gameObject.transform.rotation.z);
-            Instantiate(stairObject, new Vector3(transform.parent.gameObject.transform.position.x, transform.parent.gameObject.transform.position.y + 6.227f, transform.parent.gameObject.transform.transform.position.z), Quaternion.Euler(transform.parent.gameObject.transform.rotation.x, transform.parent.gameObject.transform.rotation.y + 342.49f, transform.parent.gameObject.transform.rotation.z));
+            Instantiate(stairObject, new Vector3(transform.parent.gameObject.transform.position.x, transform.parent.gameObject.transform.position.y + offset, transform.parent.gameObject.transform.transform.position.z), transform.parent.gameObject.transform.rotation);
         }
     }
 }
