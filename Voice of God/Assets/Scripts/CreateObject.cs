@@ -43,9 +43,10 @@ public class CreateObject : MonoBehaviour
             fired = true;
             GameObject newObject = Instantiate(stairObject, new Vector3(transform.parent.gameObject.transform.position.x, transform.parent.gameObject.transform.position.y + offset, transform.parent.gameObject.transform.transform.position.z), transform.parent.gameObject.transform.rotation);
             newObject.transform.GetChild(0).GetComponent<CreateObject>().previous = gameObject.transform.parent.gameObject;
-
+            Destroy(gameObject.transform.parent.transform.GetChild(1).gameObject);
             if (previous != null)
             {
+                
                 Destroy(previous);
                 Instantiate(floorObject, new Vector3(transform.parent.gameObject.transform.position.x, transform.parent.gameObject.transform.position.y - offset, transform.parent.gameObject.transform.transform.position.z), transform.parent.gameObject.transform.rotation);
             }
