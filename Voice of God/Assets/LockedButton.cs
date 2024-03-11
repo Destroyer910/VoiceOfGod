@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class LockedButton : MonoBehaviour
 {
     [SerializeField] private int thingsNeededToUse;
     [SerializeField] private bool canPushButton;
     [SerializeField] private bool buttonIsPushed;
+    [SerializeField] private XRGrabInteractable thingy;
 
     public GameObject activateUponGoodPush;
 
@@ -41,6 +43,10 @@ public class LockedButton : MonoBehaviour
             if(buttonScript != null)
             {
                 buttonScript.tryUnlockButton();
+            }
+            if(thingy != null)
+            {
+                thingy.enabled = true;
             }
         }
     }

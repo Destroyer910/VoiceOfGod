@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Logan/LoganTestingScene 1.unity
     guid: 28c7cae318e8eee4cba7e8fdcf2bbb85
+  - enabled: 1
+    path: Assets/Scenes/Act4.unity
+    guid: 7fe029e74c9c60e4da4944611cf29c54
+  - enabled: 1
+    path: Assets/Scenes/Act2.unity
+    guid: adcbd226e7b55014c9a6d30c0d96f816
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c27f08d526a7ea047bb3bda95ef84bdb, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9be2314fd7c36f244a3f51a0babd97a2, type: 2}
