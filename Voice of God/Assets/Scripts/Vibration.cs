@@ -5,10 +5,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Vibration : MonoBehaviour
 {
-    XRController xr;
+    ActionBasedController xr;
     void Start()
     {
-        xr = (XRController) GameObject.FindObjectOfType(typeof(XRController));
+        xr = (ActionBasedController) GameObject.FindObjectOfType(typeof(ActionBasedController));
     }
     void Update() {
         rumble(1f,0.1f);
