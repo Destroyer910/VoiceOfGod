@@ -8173,7 +8173,19 @@ PrefabInstance:
     - target: {fileID: 1631550462111767837, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 977582484}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631550462111767837, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
+      propertyPath: m_HapticSelectEnterDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631550462111767837, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
+      propertyPath: m_HapticSelectEnterIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631550462111767837, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
+      propertyPath: m_PlayHapticsOnSelectEntered
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5332316744123544786, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
@@ -8185,7 +8197,19 @@ PrefabInstance:
     - target: {fileID: 6983283148623568965, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 977582484}
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983283148623568965, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
+      propertyPath: m_HapticSelectEnterDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983283148623568965, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
+      propertyPath: m_HapticSelectEnterIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983283148623568965, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
+      propertyPath: m_PlayHapticsOnSelectEntered
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8699096635015890997, guid: 21b8e5b565f01f340b34cdb9f3ef7458, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.16
