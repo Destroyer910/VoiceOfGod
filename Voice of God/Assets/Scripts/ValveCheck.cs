@@ -1,43 +1,42 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class ValveCheck : MonoBehaviour
 {
-    public GameObject firstValve;
-    public GameObject secondValve;
-    public GameObject thirdValve;
+    [SerializeField] private GameObject valveToCheck;
+    [SerializeField] private double desiredRotation;
 
-    double firstRotZ;
-    double secondRotZ;
-    double thirdRotZ;
+    private EmissionModule particles;
 
-    bool firstFlag = false;
-    bool secondFlag = false;
-    bool thirdFlag = false;
+    private void Start()
+    {
+        particles = this.gameObject.GetComponent<ParticleSystem>().emission; // ParticleSystem is weird, uses structs, don't question it
+    }
 
     private void FixedUpdate()
     {
-        firstRotZ = firstValve.transform.localRotation.eulerAngles.z;
-        secondRotZ = secondValve.transform.eulerAngles.z;
-        thirdRotZ = thirdValve.transform.eulerAngles.z;
-
-        if (firstRotZ > 170 && firstRotZ < 190)
-            firstFlag = true;
+        float currentAngle = valveToCheck.transform.localRotation.eulerAngles.z;
+        // Passes this check if the current angle of the valve is within 10% of the desired angle
+        if (currentAngle > (desiredRotation*0.9) && currentAngle < desiredRotation*1.1)
+        {
+            disableSteam();
+        }
         else
-            firstFlag = false;
-        if (secondRotZ > 80 && secondRotZ < 100)
-            secondFlag = true;
-        else
-            secondFlag = false;
-        if (thirdRotZ > 260 && thirdRotZ < 280)
-            thirdFlag = true;
-        else
-            thirdFlag = false;
-
-        if (firstFlag && secondFlag && thirdFlag)
-            this.gameObject.GetComponent<Renderer>().material.color = Color.green;
-        else
-            this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+        {
+            enableSteam();
+        }
+    }
+    private void disableSteam()
+    {
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        particles.rateOverTime = 0;
+    }
+    private void enableSteam()
+    {
+        this.gameObject.GetComponent<BoxCollider>().enabled = true;
+        particles.rateOverTime = 15;
     }
 }
